@@ -52,6 +52,16 @@ else
 fi
 
 if [ $? -eq 0 ]; then
+    echo "${GREEN}✅ Deployment completado exitosamente${NC}"
+else
+    echo "${YELLOW}❌ Error en el deployment. Por favor revisa los errores.${NC}"
+    exit 1
+fi
+
+echo "${GREEN}✅ Proceso de deployment terminado${NC}"
+fi
+
+if [ $? -eq 0 ]; then
     echo "${GREEN}✅ ¡Deployment completado exitosamente!${NC}"
     echo "${GREEN}🌐 Tu aplicación está disponible en: https://black-sugar21.web.app${NC}"
     echo "${GREEN}🌐 También en: https://black-sugar21.firebaseapp.com${NC}"
