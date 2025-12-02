@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "black-sugar21",
     "public": "dist/Public-BlackSugar21/browser",
     "ignore": [
       "firebase.json",
