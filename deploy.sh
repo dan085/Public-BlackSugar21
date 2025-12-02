@@ -19,13 +19,17 @@ then
     npm install -g firebase-tools
 fi
 
-# Verificar login en Firebase
+# Verificar login en Firebase (usa FIREBASE_TOKEN en CI o login interactivo localmente)
 echo "${BLUE}🔐 Verificando autenticación de Firebase...${NC}"
-if ! firebase projects:list &> /dev/null
-then
-    echo "${YELLOW}⚠️  No estás autenticado en Firebase.${NC}"
-    echo "${BLUE}🔑 Por favor, inicia sesión:${NC}"
-    firebase login
+if [ -n "$FIREBASE_TOKEN" ]; then
+    echo "${BLUE}🔐 Usando FIREBASE_TOKEN (CI/CD).${NC}"
+else
+    if ! firebase projects:list &> /dev/null
+    then
+        echo "${YELLOW}⚠️  No estás autenticado en Firebase.${NC}"
+        echo "${BLUE}🔑 Por favor, inicia sesión:${NC}"
+        firebase login
+    fi
 fi
 
 # Construir la aplicación para producción
@@ -41,7 +45,11 @@ fi
 
 # Desplegar en Firebase Hosting
 echo "${BLUE}🚀 Desplegando en Firebase Hosting...${NC}"
-firebase deploy --only hosting
+if [ -n "$FIREBASE_TOKEN" ]; then
+    firebase deploy --only hosting --token "$FIREBASE_TOKEN"
+else
+    firebase deploy --only hosting
+fi
 
 if [ $? -eq 0 ]; then
     echo "${GREEN}✅ ¡Deployment completado exitosamente!${NC}"

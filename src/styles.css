@@ -1,1 +1,84 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+  /* Palette */
+  --bg-dark: #0A0A0A;
+  --bg-card: #1A1A1A;
+  --bg-overlay: #2D2D2D;
+
+  --gold-dark: #B8860B;
+  --gold: #D4AF37;
+  --purple: #4A004F;
+
+  /* New Vivid Purples */
+  --purple-vivid: #831bfc;
+  --purple-light: #9c59ea;
+
+  --text-primary: #FFFFFF;
+  --text-secondary: #E0D0E0;
+  --text-muted: #D0C0D0;
+
+  /* Gradients */
+  --gradient-gold: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  --gradient-purple: linear-gradient(135deg, #2a002e, var(--purple));
+  --gradient-luxury: linear-gradient(135deg, var(--bg-card), #252525);
+  --gradient-main: linear-gradient(to bottom, var(--purple-vivid), var(--purple-light));
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 8rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--gradient-main);
+  background-attachment: fixed;
+  /* Ensure gradient covers full scroll */
+  color: var(--text-primary);
+  font-family: 'Outfit', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Playfair Display', serif;
+  color: var(--gold);
+}
+
+a {
+  color: var(--gold);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--text-primary);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold-dark);
+  border-radius: 4px;
+}
