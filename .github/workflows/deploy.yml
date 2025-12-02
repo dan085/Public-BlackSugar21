@@ -33,11 +33,11 @@ jobs:
       - name: Build (prod)
         run: npm run build:prod
 
-      - name: Make deploy script executable
-        run: chmod +x ./deploy.sh
-
-      - name: Run deploy script
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-        run: ./deploy.sh
+      - name: Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_BLACK_SUGAR21 }}'
+          channelId: live
+          projectId: black-sugar21
 
