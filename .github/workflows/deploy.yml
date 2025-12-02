@@ -33,11 +33,11 @@ jobs:
       - name: Build (prod)
         run: npm run build:prod
 
-      - name: Install Firebase CLI
-        run: npm install -g firebase-tools
-
       - name: Deploy to Firebase Hosting
-        run: firebase deploy --only hosting:black-sugar21 --project black-sugar21
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_BLACK_SUGAR_21 }}
+          channelId: live
+          projectId: black-sugar21
 
