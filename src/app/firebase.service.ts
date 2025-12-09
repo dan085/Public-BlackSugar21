@@ -25,7 +25,11 @@ import {
   getDocs,
   Timestamp
 } from 'firebase/firestore';
-import { firebaseConfig } from './firebase.config';
+import { 
+  initializeAppCheck, 
+  ReCaptchaV3Provider 
+} from 'firebase/app-check';
+import { firebaseConfig, recaptchaSiteKey } from './firebase.config';
 import { signal } from '@angular/core';
 
 export interface UserProfile {
@@ -56,6 +60,17 @@ export class FirebaseService {
     this.app = initializeApp(firebaseConfig);
     this.auth = getAuth(this.app);
     this.db = getFirestore(this.app);
+
+    // Inicializar App Check con reCAPTCHA v3
+    if (recaptchaSiteKey) {
+      initializeAppCheck(this.app, {
+        provider: new ReCaptchaV3Provider(recaptchaSiteKey),
+        isTokenAutoRefreshEnabled: true // Refresca automáticamente los tokens
+      });
+      console.log('✅ Firebase App Check inicializado con reCAPTCHA v3');
+    } else {
+      console.warn('⚠️ App Check no configurado - falta recaptchaSiteKey en firebase.config.ts');
+    }
 
     // Listen to auth state changes
     onAuthStateChanged(this.auth, async (user) => {
