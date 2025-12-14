@@ -1,6 +1,6 @@
 import { Component, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { TranslationService } from './translation.service';
 import { FirebaseService } from './firebase.service';
 
@@ -16,7 +16,8 @@ export class App implements OnInit {
 
   constructor(
     public translate: TranslationService,
-    public firebase: FirebaseService
+    public firebase: FirebaseService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -57,7 +58,7 @@ export class App implements OnInit {
 
   async toggleLanguage(): Promise<void> {
     this.translate.toggleLanguage();
-    
+
     // Sync to Firebase if user is logged in
     const user = this.firebase.currentUser();
     if (user) {
@@ -84,6 +85,16 @@ export class App implements OnInit {
       } catch (error) {
         console.error('Error loading language from Firebase:', error);
       }
+    }
+  }
+
+  // Permitir acceder a páginas legales sin pasar por el age gate
+  isLegalRoute(): boolean {
+    try {
+      const url = this.router.url || '';
+      return url.startsWith('/terms') || url.startsWith('/privacy');
+    } catch (e) {
+      return false;
     }
   }
 }

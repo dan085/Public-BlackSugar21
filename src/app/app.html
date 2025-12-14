@@ -2,7 +2,7 @@
   <router-outlet></router-outlet>
 
   <!-- Age Gate Overlay -->
-  <div class="age-gate" *ngIf="!ageVerified()">
+  <div class="age-gate" *ngIf="!ageVerified() && !isLegalRoute()">
     <div class="age-gate-content glass-panel">
       <div class="logo-large">
         <img src="logo-21.png" alt="Black Sugar 21" width="140" height="140" />
