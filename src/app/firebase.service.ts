@@ -63,11 +63,25 @@ export class FirebaseService {
 
     // Inicializar App Check con reCAPTCHA v3
     if (recaptchaSiteKey) {
-      initializeAppCheck(this.app, {
-        provider: new ReCaptchaV3Provider(recaptchaSiteKey),
-        isTokenAutoRefreshEnabled: true // Refresca automáticamente los tokens
-      });
-      console.log('✅ Firebase App Check inicializado con reCAPTCHA v3');
+      try {
+        // En desarrollo, usar modo debug para evitar errores 400
+        const isLocalhost = window.location.hostname === 'localhost' || 
+                           window.location.hostname === '127.0.0.1';
+        
+        if (isLocalhost) {
+          // Modo debug para desarrollo local
+          (self as any).FIREBASE_APPCHECK_DEBUG_TOKEN = true;
+        }
+        
+        initializeAppCheck(this.app, {
+          provider: new ReCaptchaV3Provider(recaptchaSiteKey),
+          isTokenAutoRefreshEnabled: true
+        });
+        
+        console.log('✅ Firebase App Check inicializado con reCAPTCHA v3');
+      } catch (error) {
+        console.warn('⚠️ Error al inicializar App Check:', error);
+      }
     } else {
       console.warn('⚠️ App Check no configurado - falta recaptchaSiteKey en firebase.config.ts');
     }

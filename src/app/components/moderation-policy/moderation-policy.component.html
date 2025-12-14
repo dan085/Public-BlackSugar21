@@ -1,0 +1,134 @@
+<div class="policy-container">
+  <header class="policy-header">
+    <div class="header-content">
+      <img src="logo-21.png" alt="Black Sugar 21" width="60" height="60" />
+      <h1>{{ t('moderation.title') }}</h1>
+      <p class="subtitle">{{ t('moderation.subtitle') }}</p>
+    </div>
+  </header>
+
+  <main class="policy-content">
+    <section class="policy-section glass-panel">
+      <div class="section-icon">🛡️</div>
+      <h2>{{ t('moderation.intro.title') }}</h2>
+      <p>{{ t('moderation.intro.text') }}</p>
+    </section>
+
+    <section class="policy-section glass-panel">
+      <div class="section-icon">🤖</div>
+      <h2>{{ t('moderation.ai.title') }}</h2>
+      <p>{{ t('moderation.ai.text1') }}</p>
+      <ul class="policy-list">
+        <li>{{ t('moderation.ai.detection1') }}</li>
+        <li>{{ t('moderation.ai.detection2') }}</li>
+        <li>{{ t('moderation.ai.detection3') }}</li>
+        <li>{{ t('moderation.ai.detection4') }}</li>
+        <li>{{ t('moderation.ai.detection5') }}</li>
+      </ul>
+      <p class="highlight-box">{{ t('moderation.ai.privacy') }}</p>
+    </section>
+
+    <section class="policy-section glass-panel">
+      <div class="section-icon">⚖️</div>
+      <h2>{{ t('moderation.penalty.title') }}</h2>
+      <p>{{ t('moderation.penalty.text') }}</p>
+      
+      <div class="penalty-tier">
+        <h3>{{ t('moderation.penalty.level1.title') }}</h3>
+        <p>{{ t('moderation.penalty.level1.desc') }}</p>
+        <p class="penalty-impact">{{ t('moderation.penalty.level1.impact') }}</p>
+      </div>
+
+      <div class="penalty-tier">
+        <h3>{{ t('moderation.penalty.level2.title') }}</h3>
+        <p>{{ t('moderation.penalty.level2.desc') }}</p>
+        <p class="penalty-impact">{{ t('moderation.penalty.level2.impact') }}</p>
+      </div>
+
+      <div class="penalty-tier">
+        <h3>{{ t('moderation.penalty.level3.title') }}</h3>
+        <p>{{ t('moderation.penalty.level3.desc') }}</p>
+        <p class="penalty-impact warning">{{ t('moderation.penalty.level3.impact') }}</p>
+      </div>
+
+      <p class="info-box">{{ t('moderation.penalty.recovery') }}</p>
+    </section>
+
+    <section class="policy-section glass-panel">
+      <div class="section-icon">📉</div>
+      <h2>{{ t('moderation.visibility.title') }}</h2>
+      <p>{{ t('moderation.visibility.text') }}</p>
+      <ul class="policy-list">
+        <li>{{ t('moderation.visibility.effect1') }}</li>
+        <li>{{ t('moderation.visibility.effect2') }}</li>
+        <li>{{ t('moderation.visibility.effect3') }}</li>
+      </ul>
+      <p class="highlight-box">{{ t('moderation.visibility.fairness') }}</p>
+    </section>
+
+    <section class="policy-section glass-panel">
+      <div class="section-icon">🔄</div>
+      <h2>{{ t('moderation.decay.title') }}</h2>
+      <p>{{ t('moderation.decay.text') }}</p>
+      <ul class="policy-list">
+        <li>{{ t('moderation.decay.rate') }}</li>
+        <li>{{ t('moderation.decay.automatic') }}</li>
+        <li>{{ t('moderation.decay.encourage') }}</li>
+      </ul>
+    </section>
+
+    <section class="policy-section glass-panel">
+      <div class="section-icon">👥</div>
+      <h2>{{ t('moderation.community.title') }}</h2>
+      <ul class="policy-list">
+        <li>{{ t('moderation.community.rule1') }}</li>
+        <li>{{ t('moderation.community.rule2') }}</li>
+        <li>{{ t('moderation.community.rule3') }}</li>
+        <li>{{ t('moderation.community.rule4') }}</li>
+        <li>{{ t('moderation.community.rule5') }}</li>
+      </ul>
+    </section>
+
+    <section class="policy-section glass-panel">
+      <div class="section-icon">🚨</div>
+      <h2>{{ t('moderation.report.title') }}</h2>
+      <p>{{ t('moderation.report.text') }}</p>
+      <ul class="policy-list">
+        <li>{{ t('moderation.report.option1') }}</li>
+        <li>{{ t('moderation.report.option2') }}</li>
+        <li>{{ t('moderation.report.option3') }}</li>
+        <li>{{ t('moderation.report.option4') }}</li>
+        <li>{{ t('moderation.report.option5') }}</li>
+      </ul>
+      <p class="info-box">{{ t('moderation.report.confidential') }}</p>
+    </section>
+
+    <section class="policy-section glass-panel">
+      <div class="section-icon">🔒</div>
+      <h2>{{ t('moderation.privacy.title') }}</h2>
+      <p>{{ t('moderation.privacy.text1') }}</p>
+      <ul class="policy-list">
+        <li>{{ t('moderation.privacy.point1') }}</li>
+        <li>{{ t('moderation.privacy.point2') }}</li>
+        <li>{{ t('moderation.privacy.point3') }}</li>
+        <li>{{ t('moderation.privacy.point4') }}</li>
+      </ul>
+    </section>
+
+    <section class="policy-section glass-panel cta-section">
+      <div class="section-icon">✨</div>
+      <h2>{{ t('moderation.commitment.title') }}</h2>
+      <p>{{ t('moderation.commitment.text') }}</p>
+      <button class="btn-primary" (click)="scrollToTop()">{{ t('moderation.commitment.button') }}</button>
+    </section>
+  </main>
+
+  <footer class="policy-footer">
+    <p>{{ t('moderation.footer.updated') }}</p>
+    <div class="footer-links">
+      <a routerLink="/">{{ t('footer.home') }}</a>
+      <a routerLink="/terms">{{ t('footer.terms') }}</a>
+      <a routerLink="/privacy">{{ t('footer.privacy') }}</a>
+    </div>
+  </footer>
+</div>

@@ -12,4 +12,5 @@ export const firebaseConfig = {
 
 // reCAPTCHA v3 Site Key para App Check
 // Generada desde: https://www.google.com/recaptcha/admin
-export const recaptchaSiteKey = "6LfIkCYsAAAAALJuXx9ws12wO_ayQLP5aP_hrpG0";
+// Configurada para: black-sugar21.web.app, black-sugar21.firebaseapp.com, localhost
+export const recaptchaSiteKey = "6Lez-AYqAAAAAMhK6hFLG6w10M6pM-ZJk-d-c3-k";

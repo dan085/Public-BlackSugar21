@@ -1,4 +1,5 @@
 <div class="app-container">
+  <router-outlet></router-outlet>
 
   <!-- Age Gate Overlay -->
   <div class="age-gate" *ngIf="!ageVerified()">
@@ -12,7 +13,7 @@
 
       <button class="btn-primary" (click)="verifyAge()">{{ t('age.button') }}</button>
       <p class="subtext-xs">{{ t('age.terms') }}</p>
-      
+
       <!-- Language Switcher -->
       <button class="language-switcher" (click)="toggleLanguage()">
         <span class="flag">{{ getCurrentLanguage() === 'es' ? '🇪🇸' : '🇺🇸' }}</span>
@@ -36,6 +37,7 @@
           <a href="#historias" class="nav-item">{{ t('nav.stories') }}</a>
           <a href="#eventos" class="nav-item">{{ t('nav.events') }}</a>
           <a href="#seguridad" class="nav-item">{{ t('nav.security') }}</a>
+          <a routerLink="/moderation-policy" class="nav-item">{{ t('footer.moderation') }}</a>
           <a href="#ayuda" class="nav-item">{{ t('nav.help') }}</a>
         </nav>
         <!-- Language Switcher -->
@@ -114,8 +116,9 @@
         </div>
         <div class="footer-links">
           <a href="#inicio">{{ t('footer.home') }}</a>
-          <a href="#terminos">{{ t('footer.terms') }}</a>
-          <a href="#privacidad">{{ t('footer.privacy') }}</a>
+          <a routerLink="/terms">{{ t('footer.terms') }}</a>
+          <a routerLink="/privacy">{{ t('footer.privacy') }}</a>
+          <a routerLink="/moderation-policy">{{ t('footer.moderation') }}</a>
           <a href="#">{{ t('footer.support') }}</a>
           <a href="#">{{ t('footer.contact') }}</a>
         </div>
