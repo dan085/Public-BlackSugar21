@@ -1,17 +1,45 @@
-<div class="legal-page container">
-  <h1>Política de Privacidad</h1>
-  <p>Última actualización: 2025-12-14</p>
-  <section>
-    <h2>Recopilación de datos</h2>
-    <p>Explicamos qué datos recopilamos y por qué...</p>
-  </section>
-  <section>
-    <h2>Uso de la información</h2>
-    <p>Cómo usamos los datos para mejorar la experiencia...</p>
-  </section>
-  <section>
-    <h2>Seguridad</h2>
-    <p>Medidas de seguridad y retención de datos...</p>
-  </section>
+<div class="legal-page-container">
+  <div class="legal-header">
+    <div class="logo-small">
+      <img src="logo-21.png" alt="Black Sugar 21" width="50" height="50" />
+    </div>
+    <a routerLink="/" class="back-link">← {{ t('footer.home') }}</a>
+  </div>
+
+  <div class="legal-content glass-panel">
+    <h1>{{ t('privacy.title') }}</h1>
+
+    <div class="legal-section">
+      <p class="intro-text">{{ t('privacy.intro') }}</p>
+
+      <div class="policy-block">
+        <h3>
+          <span class="icon">📊</span>
+          {{ t('privacy.collection') }}
+        </h3>
+        <p>{{ t('privacy.collectionText') }}</p>
+      </div>
+
+      <div class="policy-block">
+        <h3>
+          <span class="icon">👁️</span>
+          {{ t('privacy.usage') }}
+        </h3>
+        <p>{{ t('privacy.usageText') }}</p>
+      </div>
+
+      <div class="policy-block">
+        <h3>
+          <span class="icon">🔒</span>
+          {{ t('privacy.security') }}
+        </h3>
+        <p>{{ t('privacy.securityText') }}</p>
+      </div>
+    </div>
+
+    <div class="legal-footer">
+      <p>{{ t('footer.copyright') }}</p>
+    </div>
+  </div>
 </div>
 

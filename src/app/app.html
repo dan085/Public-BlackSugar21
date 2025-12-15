@@ -27,18 +27,15 @@
 
     <header class="bumble-toolbar">
       <div class="toolbar-content">
-        <div class="toolbar-logo">
+        <a routerLink="/" class="toolbar-logo">
           <img src="logo-21.png" alt="Black Sugar 21" width="35" height="35" />
           <span class="toolbar-brand">Black Sugar <span>21</span></span>
-        </div>
+        </a>
         <nav class="toolbar-nav">
-          <a href="#date" class="nav-item">{{ t('nav.date') }}</a>
-          <a href="#friends" class="nav-item">{{ t('nav.friends') }}</a>
-          <a href="#historias" class="nav-item">{{ t('nav.stories') }}</a>
-          <a href="#eventos" class="nav-item">{{ t('nav.events') }}</a>
-          <a href="#seguridad" class="nav-item">{{ t('nav.security') }}</a>
+          <a routerLink="/" class="nav-item">{{ t('nav.date') }}</a>
           <a routerLink="/moderation-policy" class="nav-item">{{ t('footer.moderation') }}</a>
-          <a href="#ayuda" class="nav-item">{{ t('nav.help') }}</a>
+          <a routerLink="/terms" class="nav-item">{{ t('nav.terms') }}</a>
+          <a routerLink="/privacy" class="nav-item">{{ t('nav.privacy') }}</a>
         </nav>
         <!-- Language Switcher -->
         <button class="language-switcher-toolbar" (click)="toggleLanguage()" title="{{ getCurrentLanguage() === 'es' ? 'Switch to English' : 'Cambiar a Español' }}">
@@ -65,45 +62,16 @@
         <p class="sub-tagline animate-in delay-3">{{ t('hero.subtitle') }}</p>
 
         <div class="download-buttons animate-in delay-4">
-          <a href="#" class="store-badge app-store">
+          <a [href]="storeLinks().ios" class="store-badge app-store">
             <img src="app-store-badge.webp" alt="Descárgalo en el App Store">
           </a>
-          <a href="#" class="store-badge google-play">
+          <a [href]="storeLinks().android" class="store-badge google-play">
             <img src="google-play-badge.webp" alt="Disponible en Google Play">
           </a>
         </div>
       </div>
     </section>
 
-    <section id="terminos" class="info-section">
-      <div class="container">
-        <h2>{{ t('terms.title') }}</h2>
-        <div class="text-block glass-panel">
-          <p>{{ t('terms.welcome') }}</p>
-          <ul>
-            <li>{{ t('terms.age') }}</li>
-            <li>{{ t('terms.content') }}</li>
-            <li>{{ t('terms.redistribution') }}</li>
-            <li>{{ t('terms.violation') }}</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="privacidad" class="info-section">
-      <div class="container">
-        <h2>{{ t('privacy.title') }}</h2>
-        <div class="text-block glass-panel">
-          <p>{{ t('privacy.intro') }}</p>
-          <h3>{{ t('privacy.collection') }}</h3>
-          <p>{{ t('privacy.collectionText') }}</p>
-          <h3>{{ t('privacy.usage') }}</h3>
-          <p>{{ t('privacy.usageText') }}</p>
-          <h3>{{ t('privacy.security') }}</h3>
-          <p>{{ t('privacy.securityText') }}</p>
-        </div>
-      </div>
-    </section>
 
     <footer class="elegant-footer">
       <div class="footer-content">

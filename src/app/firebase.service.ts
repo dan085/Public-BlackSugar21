@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { initializeApp, FirebaseApp } from 'firebase/app';
-import { 
-  getAuth, 
-  Auth, 
+import {
+  getAuth,
+  Auth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signOut,
@@ -11,23 +11,25 @@ import {
   GoogleAuthProvider,
   signInWithPopup
 } from 'firebase/auth';
-import { 
-  getFirestore, 
+import {
+  getFirestore,
   Firestore,
-  collection,
   doc,
   setDoc,
   getDoc,
   updateDoc,
   deleteDoc,
-  query,
-  where,
-  getDocs,
   Timestamp
 } from 'firebase/firestore';
-import { 
-  initializeAppCheck, 
-  ReCaptchaV3Provider 
+import {
+  getRemoteConfig,
+  fetchAndActivate,
+  getString,
+  RemoteConfig
+} from 'firebase/remote-config';
+import {
+  initializeAppCheck,
+  ReCaptchaV3Provider
 } from 'firebase/app-check';
 import { firebaseConfig, recaptchaSiteKey } from './firebase.config';
 import { signal } from '@angular/core';
@@ -52,7 +54,8 @@ export class FirebaseService {
   private app: FirebaseApp;
   private auth: Auth;
   private db: Firestore;
-  
+  private remoteConfig: RemoteConfig;
+
   currentUser = signal<User | null>(null);
   userProfile = signal<UserProfile | null>(null);
 
@@ -60,24 +63,34 @@ export class FirebaseService {
     this.app = initializeApp(firebaseConfig);
     this.auth = getAuth(this.app);
     this.db = getFirestore(this.app);
+    this.remoteConfig = getRemoteConfig(this.app);
+
+    // Configurar intervalo de actualización (en desarrollo puede ser bajo)
+    this.remoteConfig.settings.minimumFetchIntervalMillis = 3600000; // 1 hora
+
+    // Configurar valores por defecto para Remote Config
+    this.remoteConfig.defaultConfig = {
+      store_url_ios: 'https://appdistribution.firebase.dev/i/9653bbc47bcaabe2',
+      store_url_android: 'https://appdistribution.firebase.dev/i/9653bbc47bcaabe2'
+    };
 
     // Inicializar App Check con reCAPTCHA v3
     if (recaptchaSiteKey) {
       try {
         // En desarrollo, usar modo debug para evitar errores 400
-        const isLocalhost = window.location.hostname === 'localhost' || 
+        const isLocalhost = window.location.hostname === 'localhost' ||
                            window.location.hostname === '127.0.0.1';
-        
+
         if (isLocalhost) {
           // Modo debug para desarrollo local
           (self as any).FIREBASE_APPCHECK_DEBUG_TOKEN = true;
         }
-        
+
         initializeAppCheck(this.app, {
           provider: new ReCaptchaV3Provider(recaptchaSiteKey),
           isTokenAutoRefreshEnabled: true
         });
-        
+
         console.log('✅ Firebase App Check inicializado con reCAPTCHA v3');
       } catch (error) {
         console.warn('⚠️ Error al inicializar App Check:', error);
@@ -107,7 +120,7 @@ export class FirebaseService {
   async signUp(email: string, password: string, displayName?: string): Promise<User> {
     const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
     const user = userCredential.user;
-    
+
     // Create user profile in Firestore
     await this.createUserProfile({
       uid: user.uid,
@@ -167,7 +180,7 @@ export class FirebaseService {
   private async loadUserProfile(uid: string): Promise<void> {
     const userRef = doc(this.db, 'users', uid);
     const userSnap = await getDoc(userRef);
-    
+
     if (userSnap.exists()) {
       const data = userSnap.data();
       this.userProfile.set({
@@ -223,5 +236,22 @@ export class FirebaseService {
   async getLanguagePreference(uid: string): Promise<string | null> {
     const profile = this.userProfile();
     return profile?.preferences?.language || null;
+  }
+
+  // Store Links
+  async getStoreLinks(): Promise<{ ios: string; android: string }> {
+    try {
+      await fetchAndActivate(this.remoteConfig);
+      const ios = getString(this.remoteConfig, 'store_url_ios');
+      const android = getString(this.remoteConfig, 'store_url_android');
+
+      return {
+        ios: ios || '#',
+        android: android || '#'
+      };
+    } catch (error) {
+      console.error('Error fetching store links from Remote Config:', error);
+      return { ios: '#', android: '#' };
+    }
   }
 }

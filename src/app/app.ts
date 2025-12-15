@@ -13,6 +13,7 @@ import { FirebaseService } from './firebase.service';
 export class App implements OnInit {
   protected readonly title = signal('Black Sugar 21');
   protected readonly ageVerified = signal(false);
+  protected readonly storeLinks = signal({ ios: '#', android: '#' });
 
   constructor(
     public translate: TranslationService,
@@ -28,6 +29,13 @@ export class App implements OnInit {
         this.ageVerified.set(true);
       }
     }
+
+    // Fetch store links
+    this.firebase.getStoreLinks().then(links => {
+      if (links) {
+        this.storeLinks.set(links);
+      }
+    });
 
     // Sync language preference from Firebase if user is logged in
     if (this.firebase.currentUser()) {

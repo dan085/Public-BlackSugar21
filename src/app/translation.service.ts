@@ -40,28 +40,16 @@ export class TranslationService {
 
     // Toolbar
     'nav.date': {
-      es: 'Date',
-      en: 'Date'
+      es: 'Inicio',
+      en: 'Home'
     },
-    'nav.friends': {
-      es: 'Friends',
-      en: 'Friends'
+    'nav.terms': {
+      es: 'Términos de Uso',
+      en: 'Terms of Use'
     },
-    'nav.stories': {
-      es: 'Historias',
-      en: 'Stories'
-    },
-    'nav.events': {
-      es: 'Eventos',
-      en: 'Events'
-    },
-    'nav.security': {
-      es: 'Seguridad',
-      en: 'Security'
-    },
-    'nav.help': {
-      es: 'Ayuda',
-      en: 'Help'
+    'nav.privacy': {
+      es: 'Políticas de Privacidad',
+      en: 'Privacy Policy'
     },
 
     // Hero Section
