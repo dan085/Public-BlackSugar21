@@ -14,6 +14,9 @@ interface Translations {
 })
 export class TranslationService {
   currentLanguage = signal<Language>('es');
+  private currentYear = new Date().getFullYear();
+  private currentMonth = new Date().toLocaleDateString('es', { month: 'long', year: 'numeric' });
+  private currentMonthEn = new Date().toLocaleDateString('en', { month: 'long', year: 'numeric' });
 
   private translations: Translations = {
     // Age Gate
@@ -164,8 +167,8 @@ export class TranslationService {
       en: 'Contact'
     },
     'footer.copyright': {
-      es: '© 2025 Black Sugar 21. Todos los derechos reservados.',
-      en: '© 2025 Black Sugar 21. All rights reserved.'
+      es: `© ${this.currentYear} Black Sugar 21. Todos los derechos reservados.`,
+      en: `© ${this.currentYear} Black Sugar 21. All rights reserved.`
     },
     'footer.moderation': {
       es: 'Moderación',
@@ -406,8 +409,8 @@ export class TranslationService {
       en: 'Back to Home'
     },
     'moderation.footer.updated': {
-      es: 'Última actualización: Diciembre 2025',
-      en: 'Last updated: December 2025'
+      es: `Última actualización: ${this.currentMonth}`,
+      en: `Last updated: ${this.currentMonthEn}`
     }
   };
 

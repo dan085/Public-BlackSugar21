@@ -1,9 +1,0 @@
-Command line invocation:
-    /Users/daniel/Downloads/Xcode.app/Contents/Developer/usr/bin/xcodebuild -workspace black-sugar-21.xcodeproj/project.xcworkspace -scheme black-sugar-21 -configuration Debug clean build CODE_SIGN_IDENTITY= CODE_SIGNING_REQUIRED=NO
-
-Build settings from command line:
-    CODE_SIGN_IDENTITY = 
-    CODE_SIGNING_REQUIRED = NO
-
-2025-12-14 15:07:05.588 xcodebuild[70859:3820630] Writing error result bundle to /var/folders/2c/h790s8mn7dl3g4x9161yxc2h0000gn/T/ResultBundle_2025-14-12_15-07-0005.xcresult
-xcodebuild: error: 'black-sugar-21.xcodeproj/project.xcworkspace' does not exist.

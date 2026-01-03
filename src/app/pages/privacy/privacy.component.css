@@ -1,7 +1,8 @@
 .legal-page-container {
   min-height: 100vh;
   padding: 2rem;
-  background: linear-gradient(135deg, #1a0b2e 0%, #2d1b4e 100%);
+  background: linear-gradient(to bottom, #831bfc, #9c59ea);
+  background-attachment: fixed;
   color: #ffffff;
   font-family: 'Helvetica Neue', sans-serif;
 }
@@ -17,14 +18,14 @@
 }
 
 .back-link {
-  color: #d4b470;
+  color: #FFD700;
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;
 }
 
 .back-link:hover {
-  color: #f0d080;
+  color: #FFA500;
 }
 
 .legal-content {
@@ -32,16 +33,16 @@
   margin: 0 auto;
   padding: 3rem;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
 }
 
 h1 {
   font-size: 2.5rem;
   margin-bottom: 2rem;
-  background: linear-gradient(45deg, #d4b470, #f0d080);
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: center;
@@ -58,23 +59,23 @@ h1 {
 .policy-block {
   margin-bottom: 2.5rem;
   padding: 1.5rem;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
-  border-left: 4px solid #d4b470;
+  border-left: 4px solid #FFD700;
 }
 
 .policy-block h3 {
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  color: #d4b470;
+  color: #FFD700;
   margin-bottom: 1rem;
   font-size: 1.3rem;
 }
 
 .policy-block p {
   line-height: 1.6;
-  color: #ccc;
+  color: #ffffff;
 }
 
 .icon {

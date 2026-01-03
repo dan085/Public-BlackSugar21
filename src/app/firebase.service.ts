@@ -77,13 +77,17 @@ export class FirebaseService {
     // Inicializar App Check con reCAPTCHA v3
     if (recaptchaSiteKey) {
       try {
-        // En desarrollo, usar modo debug para evitar errores 400
+        // En desarrollo, usar modo debug para evitar errores 403
         const isLocalhost = window.location.hostname === 'localhost' ||
                            window.location.hostname === '127.0.0.1';
 
         if (isLocalhost) {
           // Modo debug para desarrollo local
+          // Esto generará un token de debug que debe ser registrado en Firebase Console
           (self as any).FIREBASE_APPCHECK_DEBUG_TOKEN = true;
+          console.log('🔧 App Check en modo DEBUG para desarrollo local');
+          console.log('📝 Si ves errores 403, copia el debug token de la consola y añádelo en:');
+          console.log('   Firebase Console > App Check > Apps > Manage debug tokens');
         }
 
         initializeAppCheck(this.app, {
@@ -93,7 +97,8 @@ export class FirebaseService {
 
         console.log('✅ Firebase App Check inicializado con reCAPTCHA v3');
       } catch (error) {
-        console.warn('⚠️ Error al inicializar App Check:', error);
+        // En desarrollo, no bloquear la aplicación por errores de App Check
+        console.warn('⚠️ Error al inicializar App Check (ignorado en desarrollo):', error);
       }
     } else {
       console.warn('⚠️ App Check no configurado - falta recaptchaSiteKey en firebase.config.ts');

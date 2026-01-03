@@ -14,6 +14,7 @@ export class App implements OnInit {
   protected readonly title = signal('Black Sugar 21');
   protected readonly ageVerified = signal(false);
   protected readonly storeLinks = signal({ ios: '#', android: '#' });
+  protected readonly mobileMenuOpen = signal(false);
 
   constructor(
     public translate: TranslationService,
@@ -104,5 +105,13 @@ export class App implements OnInit {
     } catch (e) {
       return false;
     }
+  }
+
+  toggleMobileMenu(): void {
+    this.mobileMenuOpen.set(!this.mobileMenuOpen());
+  }
+
+  closeMobileMenu(): void {
+    this.mobileMenuOpen.set(false);
   }
 }

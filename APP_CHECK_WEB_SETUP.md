@@ -1,11 +1,49 @@
 # Firebase App Check - Configuración Web
 
-## Estado Actual ✅
-- **Imports agregados**: `initializeAppCheck` y `ReCaptchaV3Provider`
-- **Código implementado**: Constructor inicializa App Check automáticamente
-- **Validación**: Verifica que la clave no sea el placeholder antes de inicializar
+## 🔧 Solución Rápida para Error 403 en Desarrollo
 
-## ⚠️ Problema Detectado
+### Error que estás viendo:
+```
+POST https://content-firebaseappcheck.googleapis.com/v1/projects/black-sugar21/apps/1:706595096331:web:0f6b128a0d6988bf20c40e:exchangeDebugToken?key=... 403 (Forbidden)
+```
+
+### Causa:
+El **debug token** generado automáticamente en localhost no está registrado en Firebase Console.
+
+### Solución Paso a Paso:
+
+#### 1. Copia el Debug Token de la Consola del Navegador
+Cuando ejecutas `ng serve`, la consola del navegador muestra:
+```
+App Check debug token: 9df6279e-a7e0-432e-a1c3-376eaa8cd2da
+You will need to add it to your app's App Check settings...
+```
+
+**Copia ese token** (en tu caso: `9df6279e-a7e0-432e-a1c3-376eaa8cd2da`)
+
+#### 2. Ve a Firebase Console
+```
+https://console.firebase.google.com/project/black-sugar21/appcheck/apps
+```
+
+#### 3. Encuentra tu App Web
+- Busca la app con ID: `1:706595096331:web:0f6b128a0d6988bf20c40e`
+- Haz clic en los **3 puntos** (⋮) o en la app misma
+
+#### 4. Manage Debug Tokens
+- Selecciona **"Manage debug tokens"**
+- Haz clic en **"Add debug token"**
+- Pega el token copiado: `9df6279e-a7e0-432e-a1c3-376eaa8cd2da`
+- Ponle un nombre descriptivo: `Local Development - Daniel`
+- Guarda
+
+#### 5. Recarga tu Navegador
+- Recarga `http://localhost:4200/`
+- El error 403 debería desaparecer ✅
+
+---
+
+## ⚠️ Problema Detectado en Screenshots Anteriores
 
 En tu captura de pantalla de App Check **no aparece ninguna app web registrada**. Solo ves las APIs de Firebase (Storage, Firestore, etc.) pero falta la sección de **Apps** donde deberías ver tu aplicación web.
 

@@ -1,14 +1,15 @@
 .policy-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 100%);
+  background: linear-gradient(to bottom, #831bfc, #9c59ea);
+  background-attachment: fixed;
   color: #ffffff;
 }
 
 .policy-header {
-  background: linear-gradient(135deg, rgba(139, 0, 139, 0.2) 0%, rgba(75, 0, 130, 0.2) 100%);
-  padding: 4rem 2rem 3rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  padding: 2rem 2rem 1.5rem;
   text-align: center;
-  border-bottom: 1px solid rgba(139, 0, 139, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .header-content {
@@ -17,23 +18,23 @@
 }
 
 .policy-header img {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
   filter: drop-shadow(0 0 20px rgba(139, 0, 139, 0.5));
   animation: pulse 3s ease-in-out infinite;
 }
 
 .policy-header h1 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
-  margin-bottom: 1rem;
-  background: linear-gradient(135deg, #ff1493 0%, #8b008b 100%);
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .subtitle {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #d8d8d8;
   opacity: 0.9;
 }
@@ -41,15 +42,15 @@
 .policy-content {
   max-width: 900px;
   margin: 0 auto;
-  padding: 3rem 2rem;
+  padding: 2rem 2rem;
 }
 
 .policy-section {
   margin-bottom: 2.5rem;
   padding: 2.5rem;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(139, 0, 139, 0.2);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 20px;
   transition: all 0.3s ease;
   animation: fadeInUp 0.6s ease forwards;
@@ -77,8 +78,8 @@
 
 .policy-section:hover {
   transform: translateY(-4px);
-  border-color: rgba(139, 0, 139, 0.4);
-  box-shadow: 0 8px 30px rgba(139, 0, 139, 0.2);
+  border-color: rgba(255, 215, 0, 0.5);
+  box-shadow: 0 8px 30px rgba(255, 215, 0, 0.3);
 }
 
 .section-icon {
@@ -97,14 +98,14 @@
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
-  color: #ff1493;
+  color: #FFD700;
 }
 
 .policy-section h3 {
   font-size: 1.4rem;
   font-weight: 600;
   margin: 1.5rem 0 1rem;
-  color: #da70d6;
+  color: #FFA500;
 }
 
 .policy-section p {
@@ -123,25 +124,25 @@
 .policy-list li {
   padding: 1rem 1.5rem;
   margin: 0.8rem 0;
-  background: rgba(139, 0, 139, 0.1);
-  border-left: 4px solid #ff1493;
+  background: rgba(255, 255, 255, 0.1);
+  border-left: 4px solid #FFD700;
   border-radius: 8px;
   font-size: 1.05rem;
   line-height: 1.6;
-  color: #e8e8e8;
+  color: #ffffff;
   transition: all 0.3s ease;
 }
 
 .policy-list li:hover {
-  background: rgba(139, 0, 139, 0.2);
+  background: rgba(255, 255, 255, 0.2);
   transform: translateX(8px);
 }
 
 .penalty-tier {
   padding: 1.5rem;
   margin: 1.5rem 0;
-  background: rgba(255, 20, 147, 0.05);
-  border: 1px solid rgba(255, 20, 147, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.3);
   border-radius: 12px;
 }
 
@@ -161,27 +162,27 @@
 
 .highlight-box {
   padding: 1.5rem;
-  background: linear-gradient(135deg, rgba(139, 0, 139, 0.2) 0%, rgba(75, 0, 130, 0.2) 100%);
-  border: 1px solid rgba(139, 0, 139, 0.4);
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 165, 0, 0.2) 100%);
+  border: 1px solid rgba(255, 215, 0, 0.4);
   border-radius: 12px;
   margin: 1.5rem 0;
   font-weight: 500;
-  color: #ffd700;
+  color: #ffffff;
 }
 
 .info-box {
   padding: 1.5rem;
-  background: rgba(30, 144, 255, 0.1);
-  border: 1px solid rgba(30, 144, 255, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 12px;
   margin: 1.5rem 0;
   font-weight: 500;
-  color: #87ceeb;
+  color: #ffffff;
 }
 
 .cta-section {
   text-align: center;
-  background: linear-gradient(135deg, rgba(139, 0, 139, 0.15) 0%, rgba(75, 0, 130, 0.15) 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
 }
 
 .btn-primary {
@@ -190,51 +191,53 @@
   font-size: 1.1rem;
   font-weight: 600;
   color: white;
-  background: linear-gradient(135deg, #ff1493 0%, #8b008b 100%);
+  background: linear-gradient(135deg, #B8860B 0%, #D4AF37 100%);
   border: none;
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(255, 20, 147, 0.4);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(255, 20, 147, 0.6);
+  box-shadow: 0 6px 25px rgba(212, 175, 55, 0.6);
 }
 
 .policy-footer {
-  background: rgba(0, 0, 0, 0.5);
-  padding: 2rem;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1rem;
   text-align: center;
-  border-top: 1px solid rgba(139, 0, 139, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .policy-footer p {
-  color: #999;
-  margin-bottom: 1rem;
+  color: #ccc;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
 }
 
 .footer-links {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 1rem;
   flex-wrap: wrap;
 }
 
 .footer-links a {
-  color: #ff1493;
+  color: #FFD700;
   text-decoration: none;
   transition: color 0.3s ease;
+  font-size: 0.85rem;
 }
 
 .footer-links a:hover {
-  color: #da70d6;
+  color: #FFA500;
 }
 
 @keyframes pulse {
-  0%, 100% { filter: drop-shadow(0 0 20px rgba(139, 0, 139, 0.5)); }
-  50% { filter: drop-shadow(0 0 30px rgba(139, 0, 139, 0.8)); }
+  0%, 100% { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5)); }
+  50% { filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.8)); }
 }
 
 @media (max-width: 768px) {

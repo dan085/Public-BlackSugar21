@@ -1,11 +1,15 @@
 <div class="policy-container">
   <header class="policy-header">
     <div class="header-content">
-      <img src="logo-21.png" alt="Black Sugar 21" width="60" height="60" />
+      <img src="logo-21.png" alt="Black Sugar 21" width="50" height="50" />
       <h1>{{ t('moderation.title') }}</h1>
       <p class="subtitle">{{ t('moderation.subtitle') }}</p>
     </div>
   </header>
+
+  <footer class="policy-footer">
+    <p>{{ t('moderation.footer.updated') }}</p>
+  </footer>
 
   <main class="policy-content">
     <section class="policy-section glass-panel">
@@ -122,13 +126,4 @@
       <button class="btn-primary" (click)="scrollToTop()">{{ t('moderation.commitment.button') }}</button>
     </section>
   </main>
-
-  <footer class="policy-footer">
-    <p>{{ t('moderation.footer.updated') }}</p>
-    <div class="footer-links">
-      <a routerLink="/">{{ t('footer.home') }}</a>
-      <a routerLink="/terms">{{ t('footer.terms') }}</a>
-      <a routerLink="/privacy">{{ t('footer.privacy') }}</a>
-    </div>
-  </footer>
 </div>

@@ -27,7 +27,7 @@
 
     <header class="bumble-toolbar">
       <div class="toolbar-content">
-        <a routerLink="/" class="toolbar-logo">
+        <a routerLink="/" class="toolbar-logo" (click)="closeMobileMenu()">
           <img src="logo-21.png" alt="Black Sugar 21" width="35" height="35" />
           <span class="toolbar-brand">Black Sugar <span>21</span></span>
         </a>
@@ -42,13 +42,41 @@
           <span class="flag">{{ getCurrentLanguage() === 'es' ? '🇪🇸' : '🇺🇸' }}</span>
           <span class="lang-text">{{ getCurrentLanguage().toUpperCase() }}</span>
         </button>
-        <!-- Mobile Menu Icon (Visual only for now) -->
-        <div class="mobile-menu-btn">
+        <!-- Mobile Menu Button -->
+        <div class="mobile-menu-btn" (click)="toggleMobileMenu()" [class.active]="mobileMenuOpen()">
           <span></span>
           <span></span>
           <span></span>
         </div>
       </div>
+
+      <!-- Mobile Menu Overlay -->
+      <div class="mobile-menu-overlay" *ngIf="mobileMenuOpen()" (click)="closeMobileMenu()"></div>
+      
+      <!-- Mobile Menu -->
+      <nav class="mobile-menu" [class.open]="mobileMenuOpen()">
+        <a routerLink="/" class="mobile-nav-item" (click)="closeMobileMenu()">
+          <span class="mobile-nav-icon">🏠</span>
+          {{ t('nav.date') }}
+        </a>
+        <a routerLink="/moderation-policy" class="mobile-nav-item" (click)="closeMobileMenu()">
+          <span class="mobile-nav-icon">🛡️</span>
+          {{ t('footer.moderation') }}
+        </a>
+        <a routerLink="/terms" class="mobile-nav-item" (click)="closeMobileMenu()">
+          <span class="mobile-nav-icon">📋</span>
+          {{ t('nav.terms') }}
+        </a>
+        <a routerLink="/privacy" class="mobile-nav-item" (click)="closeMobileMenu()">
+          <span class="mobile-nav-icon">🔒</span>
+          {{ t('nav.privacy') }}
+        </a>
+        <div class="mobile-menu-divider"></div>
+        <button class="mobile-nav-item mobile-lang-switcher" (click)="toggleLanguage()">
+          <span class="mobile-nav-icon">{{ getCurrentLanguage() === 'es' ? '🇪🇸' : '🇺🇸' }}</span>
+          {{ getCurrentLanguage() === 'es' ? 'English' : 'Español' }}
+        </button>
+      </nav>
     </header>
 
     <section id="inicio" class="hero-section">
@@ -87,8 +115,6 @@
           <a routerLink="/terms">{{ t('footer.terms') }}</a>
           <a routerLink="/privacy">{{ t('footer.privacy') }}</a>
           <a routerLink="/moderation-policy">{{ t('footer.moderation') }}</a>
-          <a href="#">{{ t('footer.support') }}</a>
-          <a href="#">{{ t('footer.contact') }}</a>
         </div>
         <div class="footer-copyright">
           <p>{{ t('footer.copyright') }}</p>

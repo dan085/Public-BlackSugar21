@@ -43,6 +43,8 @@ service cloud.firestore {
         // Helper function: verificar si el match tiene messageCount > 0
         function hasExistingMessages() {
           let matchData = get(/databases/$(database)/documents/matches/$(matchId)).data;
+          // Si messageCount no existe O es 0, retornar false
+          // Si existe y es > 0, retornar true
           return matchData.keys().hasAny(['messageCount']) && matchData.messageCount > 0;
         }
         
@@ -58,7 +60,11 @@ service cloud.firestore {
                 hasExistingMessages() ||
                 // Si ES el primer mensaje, verificar tipo ORIGINAL (al momento del match)
                 getSenderTypeAtMatch() == 'SUGAR_DADDY' ||
-                getSenderTypeAtMatch() == 'SUGAR_MOMMY'
+                getSenderTypeAtMatch() == 'SUGAR_MOMMY' ||
+                // FALLBACK: Si no hay userTypesAtMatch, verificar tipo actual (compatibilidad con matches viejos)
+                (!get(/databases/$(database)/documents/matches/$(matchId)).data.keys().hasAny(['userTypesAtMatch']) &&
+                 (get(/databases/$(database)/documents/users/$(request.auth.uid)).data.userType == 'SUGAR_DADDY' ||
+                  get(/databases/$(database)/documents/users/$(request.auth.uid)).data.userType == 'SUGAR_MOMMY'))
               );
         
         // No permitir actualizar o eliminar mensajes
